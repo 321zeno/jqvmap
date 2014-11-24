@@ -256,7 +256,11 @@
     var cx = 0, cy = 0, ctrlx, ctrly;
 
     return path.replace(/([MmLlHhVvCcSs])((?:-?(?:\d+)?(?:\.\d+)?,?\s?)+)/g, function (segment, letter, coords, index) {
-      coords = coords.replace(/(\d)-/g, '$1,-').replace(/\s+/g, ',').split(',');
+      // coords = coords.replace(/(\d)-/g, '$1,-').replace(/\s+/g, ',').split(',');
+      coords = coords.replace(/(\d)-/g, '$1,-')
+              .replace(/^\s+/g, '')
+              .replace(/\s+$/g, '')
+              .replace(/\s+/g, ',').split(',');
       if (!coords[0]) {
         coords.shift();
       }
